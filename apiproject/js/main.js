@@ -1,4 +1,4 @@
-const URL = `https://pokeapi.co/api/v2/pokemon/ditto`;
+const URL = `https://pokeapi.co/api/v2/pokemon/random`;
 
 async function getData(URL) {
   try {
@@ -12,15 +12,13 @@ async function getData(URL) {
     const data = await response.json();
     console.log(data);
     document.querySelector("h1").textContent = data.name;
-    document.querySelector("h2").textContent = data.url;
-    body.insertAdjacentHTML(
-      //make this a DOMSselector object later.
+    document.querySelector("img").src = data.sprites.front_default;
+    document.querySelector(".box").insertAdjacentHTML(
       "beforeend",
-      `<div class="item">
-          
-          <img src=${data.url} alt="This is ${data.name}">
-        </div>
-        `
+      `
+    <div class="item">
+      <img src="${data.sprites.front_default}" alt="">
+    </div>`
     );
   } catch (error) {
     document.querySelector("h1").textContent = error;
@@ -29,3 +27,8 @@ async function getData(URL) {
   }
 }
 getData(URL);
+// function popup() {
+//   window.open("open.html", "opening", "popup");
+// }
+
+// popup();
