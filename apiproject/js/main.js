@@ -28,6 +28,7 @@ async function getData(URL) {
   }
 }
 getData(URL);
+
 // function popup() {
 //   window.open("open.html", "opening", "popup");
 // }
