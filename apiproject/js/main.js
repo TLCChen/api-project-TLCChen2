@@ -1,5 +1,5 @@
 // use template literals
-const URL = `https://pokeapi.co/api/v2/pokemon/?limit=1292`;
+const URL = `https://pokeapi.co/api/v2/pokemon/?limit=900`;
 // take the url and then redo this whole thing but with the url
 
 const list = [];
@@ -17,7 +17,7 @@ async function getData(URL) {
     console.log(data);
     const list = data.results.map((take) => take.url);
     console.log(list);
-    return list
+    return list;
     // const num = list.length;
     // console.log(num);
     // return num;
@@ -30,26 +30,28 @@ async function getData(URL) {
   }
 }
 
-async function getData2(URL) {
+async function getData2() {
+  const listLen = await getData(URL);
+  const len = listLen.length;
+  const y = Math.floor(Math.random() * len);
+  console.log(y);
+
   try {
-    const response = await fetch(URL);
+    const response = await fetch(listLen[y - 1]);
     console.log(response);
     // 200-299
     if (response.status != 200) {
       throw new Error(response.statusText);
     }
-    // take response from serve and convert it to JSON
-
-    const listLen = await getData(URL);
-    const y = Math.floor(Math.random() * listLen);
-    console.log(y);
     const data = await response.json();
+    console.log(data);
     document.querySelector(".box").insertAdjacentHTML(
-      "afterbegin",
-      `<img src="${}" alt="bob">`
+      "beforeend",
+      `<div class="item">
+        <img src=${data.sprites.front_default} alt="This is ${data.name}">
+      </div>
+      `
     );
-
-    // data.results.forEach((urls) => list.push(urls.url));
   } catch (error) {
     document.querySelector("h1").textContent = error;
     document.querySelector("h1").textContent =
@@ -57,11 +59,9 @@ async function getData2(URL) {
   }
 }
 
-(async () => {
-  const listLen = await getData(URL);
-  const y = Math.floor(Math.random() * listLen);
-  console.log(y);
-})();
+document.querySelector(".btn").addEventListener("click", function () {
+  getData2();
+});
 
 // data.results.forEach((urls) => list.push(urls.url));
 // console.log(list);
