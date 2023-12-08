@@ -2,6 +2,7 @@
     display: flex;
     flex-wrap: wrap;
     justify-content: space-around;
+    flex-direction: column;
 }
 
 .item{
@@ -12,5 +13,7 @@
 img{
     width: 100%;
     height: auto;
+    filter:contrast(0);
     image-rendering: pixelated;
+    transition: filter 2s;
 }

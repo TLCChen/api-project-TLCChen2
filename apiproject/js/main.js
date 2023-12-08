@@ -61,6 +61,8 @@ async function getData2() {
 
 document.querySelector(".btn").addEventListener("click", function () {
   getData2();
+  // removes the first element with class called "item"
+  document.querySelector(".item").remove();
 });
 
 // data.results.forEach((urls) => list.push(urls.url));
