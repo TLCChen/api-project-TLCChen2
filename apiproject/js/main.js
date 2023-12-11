@@ -1,5 +1,7 @@
 // use template literals
 const URL = `https://pokeapi.co/api/v2/pokemon/?limit=900`;
+const URL3 =
+  "https://digimoncard.io/api-public/getAllCards.php?sort=name&series=Digimon%20Card%20Game&sortdirection=asc";
 // take the url and then redo this whole thing but with the url
 
 const list = [];
@@ -60,9 +62,11 @@ async function getData2() {
 }
 
 document.querySelector(".btn").addEventListener("click", function () {
+  // the function on line 66 tries to remove first before the item is added so the item is not deleted because the item is generated too slowly. So 66 happens before 64.(The await)
   getData2();
   // removes the first element with class called "item"
   document.querySelector(".item").remove();
+  console.log(document.querySelector(".input").value);
 });
 
 // data.results.forEach((urls) => list.push(urls.url));
