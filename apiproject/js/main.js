@@ -3,7 +3,7 @@ const URL = `https://pokeapi.co/api/v2/pokemon/?limit=900`;
 const URL3 =
   "https://digimoncard.io/api-public/getAllCards.php?sort=name&series=Digimon%20Card%20Game&sortdirection=asc";
 // take the url and then redo this whole thing but with the url
-
+const again = true;
 const list = [];
 
 async function getData(URL) {
@@ -47,10 +47,11 @@ async function getData2() {
     }
     const data = await response.json();
     console.log(data);
+    document.querySelector(".item").remove();
     document.querySelector(".box").insertAdjacentHTML(
       "beforeend",
       `<div class="item">
-        <img src=${data.sprites.front_default} alt="This is ${data.name}">
+      <img src=${data.sprites.front_default} alt="This is ${data.name}">
       </div>
       `
     );
@@ -63,9 +64,11 @@ async function getData2() {
 
 document.querySelector(".btn").addEventListener("click", function () {
   // the function on line 66 tries to remove first before the item is added so the item is not deleted because the item is generated too slowly. So 66 happens before 64.(The await)
-  getData2();
+  if (again) {
+    getData2();
+  }
+  console.log(again);
   // removes the first element with class called "item"
-  document.querySelector(".item").remove();
   console.log(document.querySelector(".input").value);
 });
 
