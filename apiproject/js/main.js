@@ -34,7 +34,7 @@ async function getData2() {
   const y = Math.floor(Math.random() * len);
   console.log(y);
   const num = list2[y - 1];
-  console.log(num)
+  console.log(num);
 
   try {
     const response = await fetch(num);
@@ -63,49 +63,49 @@ async function getData2() {
 
 async function getData3() {
   const data = await getData(URL);
-  data.forEach((push)=> list2.push(push));
+  data.forEach((push) => list2.push(push));
 }
 
-async function call(){
+async function call() {
   await getData3();
   // console.log(list2);
-  if(again === true){document.querySelector(".btn").addEventListener("click", async function(){
-    // document.querySelector(".item").remove();
-    document.querySelectorAll(".item").forEach((item)=> itemBox.push(item))
-    console.log(itemBox)
-    // const reverseBox = itemBox.reverse()
-    // const goAway = reverseBox.filter((item)=> reverseBox.indexOf(item) != 0)
-    // const goAway1 = reverseBox.filter((item)=> reverseBox.indexOf(item) === 0)
-    // console.log(goAway)
-    // console.log(goAway1)
-    // Does not work because it leaves the last pokemon from the previous press
-    itemBox.forEach((item)=>item.remove())
-    await getData2();
-    console.log(document.querySelector(".input").value);
-    console.log(again)
-    // change pokemon when they are out of guesses or correct
-    // let cat = true
-    // let tick = 0
-    // while (cat){
-    //   tick += 1
-    //   console.log(tick)
-    //   if(tick > 100){
-    //     tick = 0
-    //     console.log(tick)
-    //     again = true
-    //     cat = false
-    //   }
-    // }
-  })
-}
+  if (again === true) {
+    document.querySelector(".btn").addEventListener("click", async function () {
+      // document.querySelector(".item").remove();
+      document.querySelectorAll(".item").forEach((item) => itemBox.push(item));
+      console.log(itemBox);
+      // const reverseBox = itemBox.reverse()
+      // const goAway = reverseBox.filter((item)=> reverseBox.indexOf(item) != 0)
+      // const goAway1 = reverseBox.filter((item)=> reverseBox.indexOf(item) === 0)
+      // console.log(goAway)
+      // console.log(goAway1)
+      // Does not work because it leaves the last pokemon from the previous press
+      itemBox.forEach((item) => item.remove());
+      await getData2();
+      console.log(document.querySelector(".input").value);
+      console.log(again);
+      // change pokemon when they are out of guesses or correct
+      // let cat = true
+      // let tick = 0
+      // while (cat){
+      //   tick += 1
+      //   console.log(tick)
+      //   if(tick > 100){
+      //     tick = 0
+      //     console.log(tick)
+      //     again = true
+      //     cat = false
+      //   }
+      // }
+    });
+  }
 }
 
-document.querySelector("#change").addEventListener("click", function(){
-  again = false
-  console.log("apple")
-})
-call()
-
+document.querySelector("#change").addEventListener("click", function () {
+  again = false;
+  console.log("apple");
+});
+call();
 
 // async function getData2() {
 //   const listLen = await getData(URL);
@@ -168,4 +168,3 @@ call()
 // }
 
 // popup();
-
