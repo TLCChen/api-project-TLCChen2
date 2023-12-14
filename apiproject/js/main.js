@@ -66,6 +66,20 @@ async function getData3() {
   data.forEach((push) => list2.push(push));
 }
 
+async function getData4() {
+  console.log("getData4");
+}
+
+function clear() {
+  document.querySelector(".input").value = "";
+}
+
+function submit() {
+  document.querySelector("#change").addEventListener("click", function () {
+    if ((document.querySelector(".input").value = getData2())) {
+    }
+  });
+}
 async function call() {
   await getData3();
   // console.log(list2);
@@ -84,19 +98,6 @@ async function call() {
       await getData2();
       console.log(document.querySelector(".input").value);
       console.log(again);
-      // change pokemon when they are out of guesses or correct
-      // let cat = true
-      // let tick = 0
-      // while (cat){
-      //   tick += 1
-      //   console.log(tick)
-      //   if(tick > 100){
-      //     tick = 0
-      //     console.log(tick)
-      //     again = true
-      //     cat = false
-      //   }
-      // }
     });
   }
 }
@@ -106,65 +107,3 @@ document.querySelector("#change").addEventListener("click", function () {
   console.log("apple");
 });
 call();
-
-// async function getData2() {
-//   const listLen = await getData(URL);
-//   const len = listLen.length;
-//   const y = Math.floor(Math.random() * len);
-//   console.log(y);
-//   const num = listLen[y - 1];
-
-//   try {
-//     const response = await fetch(num);
-//     console.log(response);
-//     // 200-299
-//     if (response.status != 200) {
-//       throw new Error(response.statusText);
-//     }
-//     const data = await response.json();
-//     console.log(data);
-//     document.querySelector(".box").insertAdjacentHTML(
-//       "beforeend",
-//       `<div class="item">
-//       <img src=${data.sprites.front_default} alt="This is ${data.name}">
-//       </div>
-//       `
-//     );
-//     console.log(data.name);
-//     return data.name;
-//   } catch (error) {
-//     document.querySelector("h1").textContent = error;
-//     document.querySelector("h1").textContent =
-//       "Please search for something else.";
-//   }
-// }
-
-// document.querySelector(".btn").addEventListener("click", async function () {
-//   // the function on line 66 tries to remove first before the item is added so the item is not deleted because the item is generated too slowly. So 66 happens before 64.(The await)
-//   console.log(again);
-//   if (again) {
-//     await getData2();
-//     again = false;
-//     correct = false;
-//     console.log(document.querySelector(".input").value);
-//     document.querySelector(".item").remove();
-//   }
-//   console.log(again);
-//   // removes the first element with class called "item"
-// });
-
-// document.querySelector("#change").addEventListener("click", function () {
-//   again = true;
-// });
-
-// if (document.querySelector(".input").value === getData2()) {
-//   correct = true;
-// }
-
-// data.results.forEach((urls) => list.push(urls.url));
-// console.log(list);
-// function popup() {
-//   window.open("open.html", "opening", "popup");
-// }
-
-// popup();
