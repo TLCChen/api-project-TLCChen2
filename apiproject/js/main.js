@@ -69,9 +69,9 @@ async function getData3() {
 async function call() {
   await getData3();
   // console.log(list2);
-  if (again === true) {
-    document.querySelector(".btn").addEventListener("click", async function () {
-      // document.querySelector(".item").remove();
+
+  document.querySelector(".btn").addEventListener("click", async function () {
+    if (again) {
       document.querySelectorAll(".item").forEach((item) => itemBox.push(item));
       console.log(itemBox);
       // const reverseBox = itemBox.reverse()
@@ -83,6 +83,7 @@ async function call() {
       itemBox.forEach((item) => item.remove());
       await getData2();
       console.log(document.querySelector(".input").value);
+      again = false;
       console.log(again);
       // change pokemon when they are out of guesses or correct
       // let cat = true
@@ -97,14 +98,22 @@ async function call() {
       //     cat = false
       //   }
       // }
-    });
-  }
+    }
+    // document.querySelector(".item").remove();
+  });
 }
 
-document.querySelector("#change").addEventListener("click", function () {
-  again = false;
-  console.log("apple");
-});
+async function getData4() {
+  let name1 = await getData2(); // set name to name in get data2
+  document.querySelector("#change").addEventListener("click", function () {
+    if (document.querySelector(".input").value === name1) {
+      again = true;
+    }
+    document.querySelector(".input").value = "";
+    console.log("apple");
+  });
+}
+
 call();
 
 // async function getData2() {
