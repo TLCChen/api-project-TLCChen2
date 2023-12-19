@@ -53,7 +53,6 @@ async function getData2() {
       `
     );
     console.log(data.name);
-    return data.name;
   } catch (error) {
     document.querySelector("h1").textContent = error;
     document.querySelector("h1").textContent =
@@ -104,18 +103,20 @@ async function call() {
 }
 
 async function getData4() {
-  let name1 = await getData2(); // set name to name in get data2
-  document.querySelector("#change").addEventListener("click", function () {
-    if (document.querySelector(".input").value === name1) {
-      again = true;
-    }
-    document.querySelector(".input").value = "";
-    console.log("apple");
-  });
+  const name1 = await getData2();
+  // set name to name in get data2
+  console.log(name1);
+  // document.querySelector("#change").addEventListener("click", function () {
+  //   if (document.querySelector(".input").value === name1) {
+  //     again = true;
+  //   }
+  //   document.querySelector(".input").value = "";
+  //   console.log(again);
+  // });
 }
 
 call();
-
+getData4();
 // async function getData2() {
 //   const listLen = await getData(URL);
 //   const len = listLen.length;
