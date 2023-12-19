@@ -14,13 +14,13 @@ async function getData(URL) {
 
   const data = await response.json();
   console.log(data);
-  list2 = data.results.map((take) => take.url);
-  console.log(list2);
-  return list2;
+  const list = data.results.map((take) => take.url);
+  console.log(list);
+  return list;
 }
 
 async function getList() {
-  const list = getData();
+  const list = getData(URL);
   const len = list.length;
   const y = Math.floor(Math.random() * len);
   console.log(y);
@@ -54,10 +54,10 @@ async function getData3() {
   data.forEach((push) => list2.push(push));
 }
 
-async function call(){
-  getData(URL)
-}
-
-async function getDataInfinity() {
-  // now you never nefunction
+function call(){
+  document.querySelector(".btn").addEventListener("click", function(){
+    getData(URL);
+    getList();
+    getData5();
+  })
 }
