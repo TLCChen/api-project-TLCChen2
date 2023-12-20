@@ -7,8 +7,8 @@ const URL3 =
 let list2 = [];
 let itemBox = [];
 let again = true;
-let name2 = ""
-let data2 = ""
+let name2 = "";
+let data2 = "";
 
 async function getData(URL) {
   try {
@@ -31,7 +31,7 @@ async function getData(URL) {
   }
 }
 
-async function getData3() {
+async function getList() {
   const data = await getData(URL);
   data.forEach((push) => list2.push(push));
 }
@@ -62,7 +62,7 @@ async function getData2() {
   }
 }
 
-async function create(){
+async function create() {
   await getData2();
   document.querySelector(".box").insertAdjacentHTML(
     "beforeend",
@@ -73,7 +73,7 @@ async function create(){
   );
 }
 
-function deleted(){
+function deleted() {
   document.querySelectorAll(".item").forEach((item) => itemBox.push(item));
   console.log(itemBox);
   // const reverseBox = itemBox.reverse()
@@ -86,15 +86,14 @@ function deleted(){
 }
 
 async function call() {
-
-  await getData3();
+  await getList();
   // console.log(list2);
 
   document.querySelector(".btn").addEventListener("click", async function () {
-    if(document.querySelector(".btn").innerHTML === "Click"){
-      document.querySelector(".btn").innerHTML = "Next"
+    if (document.querySelector(".btn").innerHTML === "Click") {
+      document.querySelector(".btn").innerHTML = "Next";
     }
-    
+
     if (again) {
       deleted();
       await create();
@@ -116,50 +115,58 @@ async function call() {
       //   }
       // }
     }
-    // by checking the if statement, even if it does not run, the variables within that statement already exists, "name2" 
+    // by checking the if statement, even if it does not run, the variables within that statement already exists, "name2"
     // I mean.
-
   });
 }
 
 // Why does the getData2 function not work here? It works when called above.
 async function check() {
-  let tries = 0
-  await getData3();
+  let tries = 0;
+  await getList();
   await getData2();
   document.querySelector("#change").addEventListener("click", function () {
-    if(again != true){
-      tries += 1
-      console.log(tries)
-      if (document.querySelector(".input").value === name2) {
+    if (again != true) {
+      tries++;
+      document
+        .querySelectorAll(".batmen")
+        .forEach((item) => itemBox.push(item));
+      console.log(itemBox);
+      itemBox.forEach((item) => item.remove());
+      // this is awful 👎👎👎👎👎
+      document.querySelector(".box").insertAdjacentHTML(
+        "afterbegin",
+        `<div class = "batmen">
+        <h2>You have ${5 - tries} tries left.</h2>
+        </div>
+        `
+      );
+      console.log(tries);
+      if (document.querySelector(".input").value.toLowerCase() === name2) {
         again = true;
-        const class1 = document.querySelector(".img")
+        const class1 = document.querySelector(".img");
         class1.classList.remove("img");
-        class1.classList.add("imgsee")
-        tries = 0
-      }
-      else if(tries > 5 && again != true){
-        tries = 0
-        again = true
+        class1.classList.add("imgsee");
+        tries = 0;
+      } else if (tries >= 5 && again != true) {
+        tries = 0;
+        again = true;
         deleted();
         create();
-  
+
         console.log(document.querySelector(".input").value);
         again = false;
         console.log(again);
-        console.log("The Screen Will Say You Lose. Next?")
+        console.log("YOU FAILED");
       }
       document.querySelector(".input").value = "";
       console.log(again);
-
     }
-    
   });
 }
 
 call();
 check();
-
 
 // document.querySelector("#change").addEventListener("click", function(){
 //   again = true

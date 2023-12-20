@@ -6,14 +6,20 @@ html, body, *{
   }
 
 .box{
+    margin: 10px auto;
     display: flex;
     flex-wrap: wrap;
     justify-content: space-around;
     flex-direction: column;
+    width: 80vw;
+    height: 100vh;
+    background-image: url("https://media1.tenor.com/m/Spmi9HLHEz0AAAAd/despite-all-my-rage.gif");
+    background-size: cover;
 }
 
 .item{
-    width: 50vw;
+    /* open session chat 😡😡😡😡😡😡 */
+    width: 50%;
     height: auto;
     margin: auto;
 }
@@ -35,6 +41,28 @@ html, body, *{
     text-decoration: none;
     background: linear-gradient(160deg, #666, #444);
     text-shadow: 0px 0px 2px rgba(0, 0, 0, .5);
+    transition: 0.2s;
+    margin: 1rem auto;
+}
+
+.batmen{
+    /* can you make your own input (this isn't even an input) css instead of stealing a button */
+    border-radius: 1.2rem;
+    border: .3rem outset rgb(44, 0, 116);
+    position: relative;
+    display: inline-block;
+    padding: 1.5rem 3rem;
+    color: #eee;
+    text-transform: uppercase;
+    letter-spacing: .4rem;
+    overflow: hidden;
+    box-shadow: 0 0 10px rgb(175, 6, 29);
+    font-family: verdana;
+    font-size: 1.5rem;
+    font-weight: bolder;
+    text-decoration: none;
+    background: linear-gradient(160deg, rgb(183, 178, 228), rgb(4, 56, 230));
+    text-shadow: 0px 0px 2px rgba(0, 0, 0, 0.5);
     transition: 0.2s;
     margin: 1rem auto;
 }
