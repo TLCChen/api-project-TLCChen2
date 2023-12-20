@@ -60,10 +60,18 @@ html, body, *{
     margin: 1rem auto;
 }
 
-img{
+.img{
     width: 100%;
     height: auto;
     filter:contrast(0);
+    image-rendering: pixelated;
+    transition: filter 2s;
+}
+
+.imgsee{
+    width: 100%;
+    height: auto;
+    filter:contrast(1);
     image-rendering: pixelated;
     transition: filter 2s;
 }

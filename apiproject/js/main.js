@@ -7,6 +7,8 @@ const URL3 =
 let list2 = [];
 let itemBox = [];
 let again = true;
+let name2 = ""
+let data2 = ""
 
 async function getData(URL) {
   try {
@@ -29,6 +31,11 @@ async function getData(URL) {
   }
 }
 
+async function getData3() {
+  const data = await getData(URL);
+  data.forEach((push) => list2.push(push));
+}
+
 async function getData2() {
   const len = list2.length;
   const y = Math.floor(Math.random() * len);
@@ -44,43 +51,54 @@ async function getData2() {
       throw new Error(response.statusText);
     }
     const data = await response.json();
-    console.log(data);
-    document.querySelector(".box").insertAdjacentHTML(
-      "beforeend",
-      `<div class="item">
-      <img src=${data.sprites.front_default} alt="This is ${data.name}">
-      </div>
-      `
-    );
+    data2 = data;
+    console.log(data2);
+    name2 = data.name;
     console.log(data.name);
   } catch (error) {
     document.querySelector("h1").textContent = error;
     document.querySelector("h1").textContent =
-      "Please search for something else.";
+      "Please search for something else GetData2.";
   }
 }
 
-async function getData3() {
-  const data = await getData(URL);
-  data.forEach((push) => list2.push(push));
+async function create(){
+  await getData2();
+  document.querySelector(".box").insertAdjacentHTML(
+    "beforeend",
+    `<div class="item">
+    <img class = "img" src=${data2.sprites.front_default} alt="This is ${data2.name}">
+    </div>
+    `
+  );
+}
+
+function deleted(){
+  document.querySelectorAll(".item").forEach((item) => itemBox.push(item));
+  console.log(itemBox);
+  // const reverseBox = itemBox.reverse()
+  // const goAway = reverseBox.filter((item)=> reverseBox.indexOf(item) != 0)
+  // const goAway1 = reverseBox.filter((item)=> reverseBox.indexOf(item) === 0)
+  // console.log(goAway)
+  // console.log(goAway1)
+  // Does not work because it leaves the last pokemon from the previous press
+  itemBox.forEach((item) => item.remove());
 }
 
 async function call() {
+
   await getData3();
   // console.log(list2);
 
   document.querySelector(".btn").addEventListener("click", async function () {
+    if(document.querySelector(".btn").innerHTML === "Click"){
+      document.querySelector(".btn").innerHTML = "Next"
+    }
+    
     if (again) {
-      document.querySelectorAll(".item").forEach((item) => itemBox.push(item));
-      console.log(itemBox);
-      // const reverseBox = itemBox.reverse()
-      // const goAway = reverseBox.filter((item)=> reverseBox.indexOf(item) != 0)
-      // const goAway1 = reverseBox.filter((item)=> reverseBox.indexOf(item) === 0)
-      // console.log(goAway)
-      // console.log(goAway1)
-      // Does not work because it leaves the last pokemon from the previous press
-      itemBox.forEach((item) => item.remove());
-      await getData2();
+      deleted();
+      await create();
+
       console.log(document.querySelector(".input").value);
       again = false;
       console.log(again);
@@ -98,25 +116,55 @@ async function call() {
       //   }
       // }
     }
-    // document.querySelector(".item").remove();
+    // by checking the if statement, even if it does not run, the variables within that statement already exists, "name2" 
+    // I mean.
+
   });
 }
 
-async function getData4() {
-  const name1 = await getData2();
-  // set name to name in get data2
-  console.log(name1);
-  // document.querySelector("#change").addEventListener("click", function () {
-  //   if (document.querySelector(".input").value === name1) {
-  //     again = true;
-  //   }
-  //   document.querySelector(".input").value = "";
-  //   console.log(again);
-  // });
+// Why does the getData2 function not work here? It works when called above.
+async function check() {
+  let tries = 0
+  await getData3();
+  await getData2();
+  document.querySelector("#change").addEventListener("click", function () {
+    if(again != true){
+      tries += 1
+      console.log(tries)
+      if (document.querySelector(".input").value === name2) {
+        again = true;
+        const class1 = document.querySelector(".img")
+        class1.classList.remove("img");
+        class1.classList.add("imgsee")
+        tries = 0
+      }
+      else if(tries > 5 && again != true){
+        tries = 0
+        again = true
+        deleted();
+        create();
+  
+        console.log(document.querySelector(".input").value);
+        again = false;
+        console.log(again);
+        console.log("The Screen Will Say You Lose. Next?")
+      }
+      document.querySelector(".input").value = "";
+      console.log(again);
+
+    }
+    
+  });
 }
 
 call();
-getData4();
+check();
+
+
+// document.querySelector("#change").addEventListener("click", function(){
+//   again = true
+//   console.log(again)
+// })
 // async function getData2() {
 //   const listLen = await getData(URL);
 //   const len = listLen.length;
