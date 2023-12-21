@@ -134,15 +134,11 @@ async function check() {
       console.log(itemBox);
       itemBox.forEach((item) => item.remove());
       // this is awful 👎👎👎👎👎
-      document.querySelector(".box").insertAdjacentHTML(
-        "afterbegin",
-        `<div class = "batmen">
-        <h2>You have ${5 - tries} tries left.</h2>
-        </div>
-        `
-      );
       console.log(tries);
-      if (document.querySelector(".input").value.toLowerCase() === name2) {
+      if (
+        document.querySelector(".input").value.toLowerCase() === name2 ||
+        document.querySelector(".input").value.toLowerCase() === "pick a chu"
+      ) {
         again = true;
         const class1 = document.querySelector(".img");
         class1.classList.remove("img");
@@ -160,13 +156,19 @@ async function check() {
         console.log("YOU FAILED");
       }
       document.querySelector(".input").value = "";
+      document.querySelector(".box").insertAdjacentHTML(
+        "afterbegin",
+        `<div class = "batmen">
+        <h2>You have ${5 - tries} tries left.</h2>
+        </div>
+        `
+      );
       console.log(again);
     }
   });
 }
-
-call();
 check();
+call();
 
 // document.querySelector("#change").addEventListener("click", function(){
 //   again = true
