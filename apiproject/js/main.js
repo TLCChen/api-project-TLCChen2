@@ -9,6 +9,7 @@ let itemBox = [];
 let again = true;
 let name2 = "";
 let data2 = "";
+let play = true;
 
 async function getData(URL) {
   try {
@@ -145,6 +146,7 @@ async function check() {
         class1.classList.add("imgsee");
         tries = 0;
       } else if (tries >= 5 && again != true) {
+        loses ++;
         tries = 0;
         again = true;
         deleted();
@@ -167,8 +169,17 @@ async function check() {
     }
   });
 }
-check();
-call();
+let gaming = true
+const limit = 5
+let loses = 0
+while(play){
+  check();
+  call();
+  if(loses >= 5){
+    play = false
+  }
+}
+
 
 // document.querySelector("#change").addEventListener("click", function(){
 //   again = true

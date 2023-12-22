@@ -12,9 +12,9 @@ html, body, *{
     justify-content: space-around;
     flex-direction: column;
     width: 80vw;
-    height: 100vh;
-    background-image: url("https://media1.tenor.com/m/Spmi9HLHEz0AAAAd/despite-all-my-rage.gif");
-    background-size: cover;
+    height: auto;
+    /* background-image: url("https://media1.tenor.com/m/Spmi9HLHEz0AAAAd/despite-all-my-rage.gif");
+    background-size: cover; */
 }
 
 .item{
@@ -48,7 +48,6 @@ html, body, *{
 .batmen{
     /* can you make your own input (this isn't even an input) css instead of stealing a button */
     border-radius: 1.2rem;
-    border: .3rem outset rgb(44, 0, 116);
     position: relative;
     display: inline-block;
     padding: 1.5rem 3rem;
@@ -56,7 +55,6 @@ html, body, *{
     text-transform: uppercase;
     letter-spacing: .4rem;
     overflow: hidden;
-    box-shadow: 0 0 10px rgb(175, 6, 29);
     font-family: verdana;
     font-size: 1.5rem;
     font-weight: bolder;
@@ -74,7 +72,7 @@ html, body, *{
     display: inline-block;
     padding: 1.5rem 3rem;
     color: #eee;
-    /* text-transform: uppercase; */
+    text-transform: uppercase; 
     letter-spacing: .4rem;
     overflow: hidden;
     box-shadow: 0 0 10px rgb(0, 0, 0, 1);
