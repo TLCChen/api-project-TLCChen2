@@ -147,6 +147,7 @@ async function check() {
         tries = 0;
       } else if (tries >= 5 && again != true) {
         loses ++;
+        console.log(loses)
         tries = 0;
         again = true;
         deleted();
