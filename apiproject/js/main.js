@@ -1,7 +1,7 @@
 // use template literals
 const URL = `https://pokeapi.co/api/v2/pokemon/?limit=900`;
 const URL3 =
-"https://digimoncard.io/api-public/getAllCards.php?sort=name&series=Digimon%20Card%20Game&sortdirection=asc";
+  "https://digimoncard.io/api-public/getAllCards.php?sort=name&series=Digimon%20Card%20Game&sortdirection=asc";
 // take the url and then redo this whole thing but with the url
 // let correct = true;
 let list2 = [];
@@ -99,7 +99,7 @@ function deleted() {
 }
 
 // Gets all the pokemons and puts them in list2.
-// When the button with class btn is clicked, style changes and 
+// When the button with class btn is clicked, style changes and
 // checks if again is true.
 // If it is delete all cards and create card
 // again becomes false
@@ -172,20 +172,20 @@ async function check() {
       } else if (tries >= 5 && again != true) {
         tries = 0;
         loses++;
-        // why is this here?? 
+        // why is this here??
         again = true;
         deleted();
         create();
-        
+
         console.log(document.querySelector(".input").value);
         again = false;
         console.log(again);
         console.log("YOU FAILED");
-        if(loses > 5){
-          document.querySelector(".box").remove()
-          fail()
-          while (true){
-            popup()
+        if (loses > 5) {
+          document.querySelector(".box").remove();
+          fail();
+          while (true) {
+            popup();
           }
         }
       }
@@ -196,27 +196,27 @@ async function check() {
         <h2>You have ${5 - tries} tries left.</h2>
         </div>
         `
-        );
-        console.log(again);
-        console.log("YOU Have", loses)
-        if(loses > 5){
-          gaming = false
-        }
+      );
+      console.log(again);
+      console.log("YOU Have", loses);
+      if (loses > 5) {
+        gaming = false;
       }
+    }
   });
 }
 
-function fail(){
+function fail() {
   document.body.insertAdjacentHTML(
     "afterbegin",
-        `<div class = "box2">
+    `<div class = "box2">
         <h1>You lose</h1>
         </div>
         `
-  )
+  );
 }
-check()
-call()
+check();
+call();
 
 // document.querySelector("#change").addEventListener("click", function(){
 //   again = true
@@ -281,4 +281,3 @@ call()
 function popup() {
   window.open("open.html", "opening", "popup");
 }
-
