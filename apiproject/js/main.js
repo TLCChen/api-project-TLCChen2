@@ -1,7 +1,7 @@
 // use template literals
 const URL = `https://pokeapi.co/api/v2/pokemon/?limit=900`;
 const URL3 =
-  "https://digimoncard.io/api-public/getAllCards.php?sort=name&series=Digimon%20Card%20Game&sortdirection=asc";
+"https://digimoncard.io/api-public/getAllCards.php?sort=name&series=Digimon%20Card%20Game&sortdirection=asc";
 // take the url and then redo this whole thing but with the url
 // let correct = true;
 let list2 = [];
@@ -9,8 +9,11 @@ let itemBox = [];
 let again = true;
 let name2 = "";
 let data2 = "";
-let play = true;
+const limit = 5;
+let loses = 0;
+let gaming = true;
 
+// Takes all the pokemon information from the API and returns list of that information
 async function getData(URL) {
   try {
     const response = await fetch(URL);
@@ -32,11 +35,17 @@ async function getData(URL) {
   }
 }
 
+// Creates list2 from list so that the API does not have to be called each time.
 async function getList() {
   const data = await getData(URL);
   data.forEach((push) => list2.push(push));
 }
 
+// Used to randomize the pokemon chosen.
+// Takes a random number from 0 to the number of pokemons - 1.
+// Uses that number as the index for which pokemon is chosen from list2.
+// Fetches information for a specific pokemon using the information from the API.
+// Returns the name of the pokemon.
 async function getData2() {
   const len = list2.length;
   const y = Math.floor(Math.random() * len);
@@ -63,6 +72,7 @@ async function getData2() {
   }
 }
 
+// Creates a card containing the pokemon.
 async function create() {
   await getData2();
   document.querySelector(".box").insertAdjacentHTML(
@@ -74,6 +84,8 @@ async function create() {
   );
 }
 
+// Push all the existing cards into a list, itemBox.
+// Deletes all the cards in itemBox.
 function deleted() {
   document.querySelectorAll(".item").forEach((item) => itemBox.push(item));
   console.log(itemBox);
@@ -86,6 +98,11 @@ function deleted() {
   itemBox.forEach((item) => item.remove());
 }
 
+// Gets all the pokemons and puts them in list2.
+// When the button with class btn is clicked, style changes and 
+// checks if again is true.
+// If it is delete all cards and create card
+// again becomes false
 async function call() {
   await getList();
   // console.log(list2);
@@ -96,6 +113,7 @@ async function call() {
     }
 
     if (again) {
+      document.querySelector(".input").value = "";
       deleted();
       await create();
 
@@ -122,6 +140,13 @@ async function call() {
 }
 
 // Why does the getData2 function not work here? It works when called above.
+// Get list of pokemons
+// get specific pokemon different from the first one(actually based on calling functions, this is the first one)
+// if button with id change is clicked,
+// check if again is false
+// if it is add 1 to tries
+// delete all text for tries left
+// create text for tries left
 async function check() {
   let tries = 0;
   await getList();
@@ -134,7 +159,6 @@ async function check() {
         .forEach((item) => itemBox.push(item));
       console.log(itemBox);
       itemBox.forEach((item) => item.remove());
-      // this is awful 👎👎👎👎👎
       console.log(tries);
       if (
         document.querySelector(".input").value.toLowerCase() === name2 ||
@@ -146,17 +170,24 @@ async function check() {
         class1.classList.add("imgsee");
         tries = 0;
       } else if (tries >= 5 && again != true) {
-        loses ++;
-        console.log(loses)
         tries = 0;
+        loses++;
+        // why is this here?? 
         again = true;
         deleted();
         create();
-
+        
         console.log(document.querySelector(".input").value);
         again = false;
         console.log(again);
         console.log("YOU FAILED");
+        if(loses > 5){
+          document.querySelector(".box").remove()
+          fail()
+          while (true){
+            popup()
+          }
+        }
       }
       document.querySelector(".input").value = "";
       document.querySelector(".box").insertAdjacentHTML(
@@ -165,22 +196,27 @@ async function check() {
         <h2>You have ${5 - tries} tries left.</h2>
         </div>
         `
-      );
-      console.log(again);
-    }
+        );
+        console.log(again);
+        console.log("YOU Have", loses)
+        if(loses > 5){
+          gaming = false
+        }
+      }
   });
 }
-let gaming = true
-const limit = 5
-let loses = 0
-while(play){
-  check();
-  call();
-  if(loses >= 5){
-    play = false
-  }
-}
 
+function fail(){
+  document.body.insertAdjacentHTML(
+    "afterbegin",
+        `<div class = "box2">
+        <h1>You lose</h1>
+        </div>
+        `
+  )
+}
+check()
+call()
 
 // document.querySelector("#change").addEventListener("click", function(){
 //   again = true
@@ -242,8 +278,7 @@ while(play){
 
 // data.results.forEach((urls) => list.push(urls.url));
 // console.log(list);
-// function popup() {
-//   window.open("open.html", "opening", "popup");
-// }
+function popup() {
+  window.open("open.html", "opening", "popup");
+}
 
-// popup();

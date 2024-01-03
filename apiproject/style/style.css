@@ -4,7 +4,9 @@ html, body, *{
     box-sizing: border-box;
     font-size: 10px;
   }
-
+h1{
+    font-size: 50rem;
+}
 .box{
     margin: 10px auto;
     display: flex;
@@ -15,6 +17,18 @@ html, body, *{
     height: auto;
     /* background-image: url("https://media1.tenor.com/m/Spmi9HLHEz0AAAAd/despite-all-my-rage.gif");
     background-size: cover; */
+}
+
+.box2{
+    margin: 10px auto;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-around;
+    flex-direction: column;
+    width: 80vw;
+    height: auto;
+    background-image: url("https://media1.tenor.com/m/Spmi9HLHEz0AAAAd/despite-all-my-rage.gif");
+    background-size: cover;
 }
 
 .item{
