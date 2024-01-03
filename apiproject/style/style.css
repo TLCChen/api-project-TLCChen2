@@ -4,6 +4,36 @@ html, body, *{
     box-sizing: border-box;
     font-size: 10px;
   }
+
+:root{
+    --light-blue: #2998ff;
+    --black: #000;
+    --white: #ffffff;
+    --dark-blue: #135cc5;
+    --light-red: #f87171;
+    --dark-red: #dc2626;
+    --gray: #252c30;
+    --card-red: #ea412e;
+    --border-yellow: #ffe066;
+    --magenta: #dea4b2;
+    --changing: linear-gradient(160deg, #302724, #ea412e);
+    --changing-cool: linear-gradient(160deg, #072053, #609be7);
+
+    /* Intentions */
+    --primary: var(--light-blue);
+    --secondary: var(--dark-blue);
+
+    /* Typography */
+    --h1: 11.391rem;
+    --h2: 7.594rem;
+    --h3: 5.063rem;
+    --h4: 3.375rem;
+    --h5: 2.25rem;
+    --h6: 1.5rem;
+}
+
+
+
 h1{
     font-size: 50rem;
 }
@@ -103,7 +133,7 @@ h1{
 .img{
     width: 100%;
     height: auto;
-    filter:contrast(0);
+    filter:contrast(1);
     image-rendering: pixelated;
     transition: filter 2s;
 }
@@ -115,3 +145,15 @@ h1{
     image-rendering: pixelated;
     transition: filter 2s;
 }
+
+.item{
+    background: var(--change);
+    border: solid 1rem var(--border-yellow);
+    border-radius: 1rem ;
+    box-shadow: 1rem 1rem 1rem rgb(0, 0, 0);
+    width: 20%;
+    height: auto;
+    margin: 2rem;
+    transition: all 500ms;
+    font-family:'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+  }
