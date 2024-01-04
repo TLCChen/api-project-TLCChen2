@@ -1,4 +1,4 @@
-const URL = `https://pokeapi.co/api/v2/pokemon/?limit=20`;
+const URL = `https://pokeapi.co/api/v2/pokemon/?limit=1`;
 let list2 = [];
 
 async function getData(URL) {
@@ -42,16 +42,17 @@ async function getData2(num) {
   console.log(data2);
   name2 = data.name;
   console.log(data.name);
+  data2.types.forEach((call) => console.log(call.type));
 }
 
 async function create(num) {
   await getData2(num);
-  document.querySelector(".box").insertAdjacentHTML(
+  document.querySelector(".box2").insertAdjacentHTML(
     "beforeend",
     `<div class="item">
-        <h2 class = "text">${data2.name}</h2>
+        <h2 class = "text">${data2.name.toUpperCase()}</h2>
         <img src=${data2.sprites.front_default} alt="This is ${data2.name}">
-        <p class = "text2">Type: ${data2.types[0].name}</p>
+        <p class = "text2">Type: ${data2.types.forEach((call) => call.name)}</p>
         <p class ="description">This is ${data2.name}</p>
       </div>
       `

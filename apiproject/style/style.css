@@ -38,11 +38,12 @@ h1{
     font-size: 50rem;
 }
 .box{
-    margin: 10px auto;
+    margin: 1rem auto;
     display: flex;
     flex-wrap: wrap;
     justify-content: space-around;
     flex-direction: column;
+    text-align: center;
     width: 80vw;
     height: auto;
     /* background-image: url("https://media1.tenor.com/m/Spmi9HLHEz0AAAAd/despite-all-my-rage.gif");
@@ -54,19 +55,18 @@ h1{
     display: flex;
     flex-wrap: wrap;
     justify-content: space-around;
-    flex-direction: column;
+    /* flex-direction: column; */
     width: 80vw;
     height: auto;
-    background-image: url("https://media1.tenor.com/m/Spmi9HLHEz0AAAAd/despite-all-my-rage.gif");
-    background-size: cover;
+    /* background-image: url("https://media1.tenor.com/m/Spmi9HLHEz0AAAAd/despite-all-my-rage.gif");
+    background-size: cover; */
 }
-
+/* 
 .item{
-    /* open session chat 😡😡😡😡😡😡 */
     width: 50%;
     height: auto;
     margin: auto;
-}
+} */
 
 .btn{
     border-radius: 1.2rem;
@@ -131,7 +131,7 @@ h1{
 }
 
 .img{
-    width: 100%;
+    width: 200%;
     height: auto;
     filter:contrast(1);
     image-rendering: pixelated;
@@ -147,13 +147,23 @@ h1{
 }
 
 .item{
-    background: var(--change);
+    background: var(--changing);
     border: solid 1rem var(--border-yellow);
     border-radius: 1rem ;
     box-shadow: 1rem 1rem 1rem rgb(0, 0, 0);
-    width: 20%;
+    width: 25%;
     height: auto;
-    margin: 2rem;
+    margin: 1rem;
     transition: all 500ms;
+    text-align: center;
     font-family:'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+  }
+
+  .text{
+    font-size: var(--h5);
+    color: rgb(0, 0, 0);
+    background-color: rgb(240, 209, 193);
+    border-radius: .5rem;
+    width: 90%;
+    margin: auto;
   }
