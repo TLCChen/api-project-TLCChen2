@@ -1,7 +1,10 @@
-// use template literals
 const URL = `https://pokeapi.co/api/v2/pokemon/?limit=900`;
+<<<<<<< Updated upstream
 const URL3 =
   "https://digimoncard.io/api-public/getAllCards.php?sort=name&series=Digimon%20Card%20Game&sortdirection=asc";
+=======
+const URL2 = "https://pokeapi.co/api/v2/type/"
+>>>>>>> Stashed changes
 // take the url and then redo this whole thing but with the url
 // let correct = true;
 let list2 = [];
@@ -11,7 +14,42 @@ let name2 = "";
 let data2 = "";
 const limit = 5;
 let loses = 0;
-let gaming = true;
+
+function begin(){
+  document.body.insertAdjacentHTML(
+      "beforeend",
+      `<div class="box">
+      <button class="btn1" id= "play">Game</button>
+      <button class="btn1" id = "index">PokeDex</button>
+    </div>
+      `
+    );
+}
+
+function cover(){
+  document.body.insertAdjacentHTML(
+      "beforeend",
+      `<div class="box">
+      <button class="btn">Click</button>
+      <button class="btn" id="change">Answer</button>
+      <input type="text" class="input">
+    </div>
+      `
+    );
+}
+
+function choose(){
+  document.querySelector("#play").addEventListener("click", function(){
+    document.querySelector(".box").remove()
+    cover()
+    check()
+    call()
+  })
+  document.querySelector("#index").addEventListener("click", function(){
+    popup()
+  })
+}
+
 
 // Takes all the pokemon information from the API and returns list of that information
 async function getData(URL) {
@@ -89,12 +127,6 @@ async function create() {
 function deleted() {
   document.querySelectorAll(".item").forEach((item) => itemBox.push(item));
   console.log(itemBox);
-  // const reverseBox = itemBox.reverse()
-  // const goAway = reverseBox.filter((item)=> reverseBox.indexOf(item) != 0)
-  // const goAway1 = reverseBox.filter((item)=> reverseBox.indexOf(item) === 0)
-  // console.log(goAway)
-  // console.log(goAway1)
-  // Does not work because it leaves the last pokemon from the previous press
   itemBox.forEach((item) => item.remove());
 }
 
@@ -120,22 +152,8 @@ async function call() {
       console.log(document.querySelector(".input").value);
       again = false;
       console.log(again);
-      // change pokemon when they are out of guesses or correct
-      // let cat = true
-      // let tick = 0
-      // while (cat){
-      //   tick += 1
-      //   console.log(tick)
-      //   if(tick > 100){
-      //     tick = 0
-      //     console.log(tick)
-      //     again = true
-      //     cat = false
-      //   }
-      // }
     }
-    // by checking the if statement, even if it does not run, the variables within that statement already exists, "name2"
-    // I mean.
+
   });
 }
 
@@ -181,11 +199,19 @@ async function check() {
         again = false;
         console.log(again);
         console.log("YOU FAILED");
+<<<<<<< Updated upstream
         if (loses > 5) {
           document.querySelector(".box").remove();
           fail();
           while (true) {
             popup();
+=======
+        if(loses > limit){
+          document.querySelector(".box").remove()
+          fail()
+          while (true){
+            popup()
+>>>>>>> Stashed changes
           }
         }
       }
@@ -206,7 +232,12 @@ async function check() {
   });
 }
 
+<<<<<<< Updated upstream
 function fail() {
+=======
+// deletes everything
+function fail(){
+>>>>>>> Stashed changes
   document.body.insertAdjacentHTML(
     "afterbegin",
     `<div class = "box2">
@@ -215,69 +246,23 @@ function fail() {
         `
   );
 }
+<<<<<<< Updated upstream
 check();
 call();
+=======
+>>>>>>> Stashed changes
 
-// document.querySelector("#change").addEventListener("click", function(){
-//   again = true
-//   console.log(again)
-// })
-// async function getData2() {
-//   const listLen = await getData(URL);
-//   const len = listLen.length;
-//   const y = Math.floor(Math.random() * len);
-//   console.log(y);
-//   const num = listLen[y - 1];
-
-//   try {
-//     const response = await fetch(num);
-//     console.log(response);
-//     // 200-299
-//     if (response.status != 200) {
-//       throw new Error(response.statusText);
-//     }
-//     const data = await response.json();
-//     console.log(data);
-//     document.querySelector(".box").insertAdjacentHTML(
-//       "beforeend",
-//       `<div class="item">
-//       <img src=${data.sprites.front_default} alt="This is ${data.name}">
-//       </div>
-//       `
-//     );
-//     console.log(data.name);
-//     return data.name;
-//   } catch (error) {
-//     document.querySelector("h1").textContent = error;
-//     document.querySelector("h1").textContent =
-//       "Please search for something else.";
-//   }
-// }
-
-// document.querySelector(".btn").addEventListener("click", async function () {
-//   // the function on line 66 tries to remove first before the item is added so the item is not deleted because the item is generated too slowly. So 66 happens before 64.(The await)
-//   console.log(again);
-//   if (again) {
-//     await getData2();
-//     again = false;
-//     correct = false;
-//     console.log(document.querySelector(".input").value);
-//     document.querySelector(".item").remove();
-//   }
-//   console.log(again);
-//   // removes the first element with class called "item"
-// });
-
-// document.querySelector("#change").addEventListener("click", function () {
-//   again = true;
-// });
-
-// if (document.querySelector(".input").value === getData2()) {
-//   correct = true;
-// }
-
-// data.results.forEach((urls) => list.push(urls.url));
-// console.log(list);
+// crashes the website.
 function popup() {
   window.open("open.html", "opening", "popup");
 }
+<<<<<<< Updated upstream
+=======
+
+begin()
+choose()
+getData(URL2)
+
+
+
+>>>>>>> Stashed changes

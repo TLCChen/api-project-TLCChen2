@@ -38,7 +38,7 @@ h1{
     margin: auto;
 }
 
-.btn{
+.btn, .btn1{
     border-radius: 1.2rem;
     border: .3rem outset #888;
     position: relative;
