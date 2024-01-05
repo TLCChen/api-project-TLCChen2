@@ -1,10 +1,5 @@
 const URL = `https://pokeapi.co/api/v2/pokemon/?limit=900`;
-<<<<<<< Updated upstream
-const URL3 =
-  "https://digimoncard.io/api-public/getAllCards.php?sort=name&series=Digimon%20Card%20Game&sortdirection=asc";
-=======
 const URL2 = "https://pokeapi.co/api/v2/type/"
->>>>>>> Stashed changes
 // take the url and then redo this whole thing but with the url
 // let correct = true;
 let list2 = [];
@@ -199,19 +194,11 @@ async function check() {
         again = false;
         console.log(again);
         console.log("YOU FAILED");
-<<<<<<< Updated upstream
-        if (loses > 5) {
-          document.querySelector(".box").remove();
-          fail();
-          while (true) {
-            popup();
-=======
         if(loses > limit){
           document.querySelector(".box").remove()
           fail()
           while (true){
             popup()
->>>>>>> Stashed changes
           }
         }
       }
@@ -232,12 +219,8 @@ async function check() {
   });
 }
 
-<<<<<<< Updated upstream
-function fail() {
-=======
 // deletes everything
 function fail(){
->>>>>>> Stashed changes
   document.body.insertAdjacentHTML(
     "afterbegin",
     `<div class = "box2">
@@ -246,18 +229,11 @@ function fail(){
         `
   );
 }
-<<<<<<< Updated upstream
-check();
-call();
-=======
->>>>>>> Stashed changes
 
 // crashes the website.
 function popup() {
   window.open("open.html", "opening", "popup");
 }
-<<<<<<< Updated upstream
-=======
 
 begin()
 choose()
@@ -265,4 +241,3 @@ getData(URL2)
 
 
 
->>>>>>> Stashed changes
