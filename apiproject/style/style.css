@@ -23,13 +23,6 @@ html, body, *{
     --primary: var(--light-blue);
     --secondary: var(--dark-blue);
 
-    /* Typography */
-    --h1: 11.391rem;
-    --h2: 7.594rem;
-    --h3: 5.063rem;
-    --h4: 3.375rem;
-    --h5: 2.25rem;
-    --h6: 1.5rem;
 }
 
 
@@ -61,12 +54,12 @@ h1{
     /* background-image: url("https://media1.tenor.com/m/Spmi9HLHEz0AAAAd/despite-all-my-rage.gif");
     background-size: cover; */
 }
-/* 
+
 .item{
     width: 50%;
     height: auto;
     margin: auto;
-} */
+}
 
 .btn{
     border-radius: 1.2rem;
@@ -131,7 +124,7 @@ h1{
 }
 
 .img{
-    width: 200%;
+    width: 80%;
     height: auto;
     filter:contrast(1);
     image-rendering: pixelated;
@@ -146,12 +139,12 @@ h1{
     transition: filter 2s;
 }
 
-.item{
+.item2{
     background: var(--changing);
     border: solid 1rem var(--border-yellow);
     border-radius: 1rem ;
     box-shadow: 1rem 1rem 1rem rgb(0, 0, 0);
-    width: 25%;
+    width: 40%;
     height: auto;
     margin: 1rem;
     transition: all 500ms;
