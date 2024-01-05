@@ -1,9 +1,8 @@
-// use template literals
+//import variables
+import { pokemon } from "./myIndex";
+
 const URL = `https://pokeapi.co/api/v2/pokemon/?limit=900`;
-const URL3 =
-  "https://digimoncard.io/api-public/getAllCards.php?sort=name&series=Digimon%20Card%20Game&sortdirection=asc";
-// take the url and then redo this whole thing but with the url
-// let correct = true;
+
 let list2 = [];
 let itemBox = [];
 let again = true;
@@ -11,7 +10,8 @@ let name2 = "";
 let data2 = "";
 const limit = 5;
 let loses = 0;
-let gaming = true;
+let bob = [];
+let cardList = [];
 
 // Takes all the pokemon information from the API and returns list of that information
 async function getData(URL) {
@@ -84,6 +84,43 @@ async function create() {
   );
 }
 
+// async function createCard() {
+//   data2.types.forEach((call) => bob.push(call.type.name));
+//   console.log(bob[0].toUpperCase());
+//   for (let i = 0; i <= bob.length - 1; i++) {
+//     cat.push(bob[i].toUpperCase());
+//   }
+//   console.log(cat);
+//   console.log(bob);
+//   document.querySelector(".box2").insertAdjacentHTML(
+//     "beforeend",
+//     `<div class="item2">
+//         <h2 class = "text">${data2.name.toUpperCase()}</h2>
+//         <img class = "img" src=${data2.sprites.front_default} alt="This is ${
+//       data2.name
+//     }">
+//         <p class = "text2">Type: ${cat.join(" | ")}</p>
+//         <p class ="description">This is ${data2.name.toUpperCase()}</p>
+//       </div>
+//       `
+//   );
+//   bob = [];
+// }
+
+async function createCard() {
+  data2.types.forEach((call) => bob.push(call.type.name));
+  console.log(bob[0].toUpperCase());
+  for (let i = 0; i <= bob.length - 1; i++) {
+    cat.push(bob[i].toUpperCase());
+  }
+  console.log(cat);
+  console.log(bob);
+  const names = data2.name.toUpperCase();
+  const sprites = data2.sprites.front_default;
+  cardList.push({ name: names, sprite: sprites, types: cat });
+  bob = [];
+}
+
 // Push all the existing cards into a list, itemBox.
 // Deletes all the cards in itemBox.
 function deleted() {
@@ -120,22 +157,7 @@ async function call() {
       console.log(document.querySelector(".input").value);
       again = false;
       console.log(again);
-      // change pokemon when they are out of guesses or correct
-      // let cat = true
-      // let tick = 0
-      // while (cat){
-      //   tick += 1
-      //   console.log(tick)
-      //   if(tick > 100){
-      //     tick = 0
-      //     console.log(tick)
-      //     again = true
-      //     cat = false
-      //   }
-      // }
     }
-    // by checking the if statement, even if it does not run, the variables within that statement already exists, "name2"
-    // I mean.
   });
 }
 
@@ -169,6 +191,7 @@ async function check() {
         class1.classList.remove("img");
         class1.classList.add("imgsee");
         tries = 0;
+        createCard();
       } else if (tries >= 5 && again != true) {
         tries = 0;
         loses++;
@@ -181,7 +204,7 @@ async function check() {
         again = false;
         console.log(again);
         console.log("YOU FAILED");
-        if (loses > 5) {
+        if (loses > limit) {
           document.querySelector(".box").remove();
           fail();
           while (true) {
@@ -218,66 +241,6 @@ function fail() {
 check();
 call();
 
-// document.querySelector("#change").addEventListener("click", function(){
-//   again = true
-//   console.log(again)
-// })
-// async function getData2() {
-//   const listLen = await getData(URL);
-//   const len = listLen.length;
-//   const y = Math.floor(Math.random() * len);
-//   console.log(y);
-//   const num = listLen[y - 1];
-
-//   try {
-//     const response = await fetch(num);
-//     console.log(response);
-//     // 200-299
-//     if (response.status != 200) {
-//       throw new Error(response.statusText);
-//     }
-//     const data = await response.json();
-//     console.log(data);
-//     document.querySelector(".box").insertAdjacentHTML(
-//       "beforeend",
-//       `<div class="item">
-//       <img src=${data.sprites.front_default} alt="This is ${data.name}">
-//       </div>
-//       `
-//     );
-//     console.log(data.name);
-//     return data.name;
-//   } catch (error) {
-//     document.querySelector("h1").textContent = error;
-//     document.querySelector("h1").textContent =
-//       "Please search for something else.";
-//   }
-// }
-
-// document.querySelector(".btn").addEventListener("click", async function () {
-//   // the function on line 66 tries to remove first before the item is added so the item is not deleted because the item is generated too slowly. So 66 happens before 64.(The await)
-//   console.log(again);
-//   if (again) {
-//     await getData2();
-//     again = false;
-//     correct = false;
-//     console.log(document.querySelector(".input").value);
-//     document.querySelector(".item").remove();
-//   }
-//   console.log(again);
-//   // removes the first element with class called "item"
-// });
-
-// document.querySelector("#change").addEventListener("click", function () {
-//   again = true;
-// });
-
-// if (document.querySelector(".input").value === getData2()) {
-//   correct = true;
-// }
-
-// data.results.forEach((urls) => list.push(urls.url));
-// console.log(list);
 function popup() {
   window.open("open.html", "opening", "popup");
 }

@@ -1,5 +1,7 @@
 const URL = `https://pokeapi.co/api/v2/pokemon/?limit=2`;
 let list2 = [];
+let data2 = "";
+let name2 = "";
 
 async function getData(URL) {
   try {
@@ -33,7 +35,7 @@ async function getList() {
 // Uses that number as the index for which pokemon is chosen from list2.
 // Fetches information for a specific pokemon using the information from the API.
 // Returns the name of the pokemon.
-let bob = []
+let bob = [];
 async function getData2(num) {
   console.log(num);
   const response = await fetch(num);
@@ -48,31 +50,33 @@ async function getData2(num) {
   // console.log(bob)
   // console.log(bob.forEach((call)=>console.log(call)))
   data2.types.forEach((call) => bob.push(call.type.name));
-  console.log(bob)
-  bob = []
-  cat = []
+  console.log(bob);
+  bob = [];
+  cat = [];
 }
 
 async function create(num) {
   await getData2(num);
   data2.types.forEach((call) => bob.push(call.type.name));
-  console.log(bob[0].toUpperCase())
-for(let i = 0; i <= bob.length-1; i++){
-  cat.push(bob[i].toUpperCase())
-}
-console.log(cat)
-  console.log(bob)
+  console.log(bob[0].toUpperCase());
+  for (let i = 0; i <= bob.length - 1; i++) {
+    cat.push(bob[i].toUpperCase());
+  }
+  console.log(cat);
+  console.log(bob);
   document.querySelector(".box2").insertAdjacentHTML(
     "beforeend",
     `<div class="item2">
         <h2 class = "text">${data2.name.toUpperCase()}</h2>
-        <img class = "img" src=${data2.sprites.front_default} alt="This is ${data2.name}">
+        <img class = "img" src=${data2.sprites.front_default} alt="This is ${
+      data2.name
+    }">
         <p class = "text2">Type: ${cat.join(" | ")}</p>
         <p class ="description">This is ${data2.name.toUpperCase()}</p>
       </div>
       `
   );
-  bob = []
+  bob = [];
 }
 
 async function call() {

@@ -23,6 +23,10 @@ html, body, *{
     --primary: var(--light-blue);
     --secondary: var(--dark-blue);
 
+    --h2: 3rem;
+    --h3: 2rem;
+    --h4: 1.5rem;
+
 }
 
 
@@ -140,7 +144,7 @@ h1{
 }
 
 .item2{
-    background: var(--changing);
+    background: var(--changing-cool);
     border: solid 1rem var(--border-yellow);
     border-radius: 1rem ;
     box-shadow: 1rem 1rem 1rem rgb(0, 0, 0);
@@ -153,10 +157,22 @@ h1{
   }
 
   .text{
-    font-size: var(--h5);
+    font-size: var(--h2);
     color: rgb(0, 0, 0);
     background-color: rgb(240, 209, 193);
     border-radius: .5rem;
     width: 90%;
     margin: auto;
+  }
+
+  .text2{
+    margin: auto;
+    background-image: url("https://static4.depositphotos.com/1000401/285/i/450/depositphotos_2857182-stock-photo-stars-in-space-or-night.jpg");
+    color: rgb(255, 255, 255);
+    font-size: var(--h3);
+    width: 80%;
+    border-radius: .5rem;
+  }
+  .description{
+    font-size: var(--h4);
   }
