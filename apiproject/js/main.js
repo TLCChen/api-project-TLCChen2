@@ -1,6 +1,6 @@
 //import variables
 import { pokemon } from "./myIndex";
-
+console.log(pokemon)
 const URL = `https://pokeapi.co/api/v2/pokemon/?limit=900`;
 
 let list2 = [];
@@ -11,6 +11,7 @@ let data2 = "";
 const limit = 5;
 let loses = 0;
 let bob = [];
+let cat = [];
 let cardList = [];
 
 // Takes all the pokemon information from the API and returns list of that information
@@ -119,6 +120,7 @@ async function createCard() {
   const sprites = data2.sprites.front_default;
   cardList.push({ name: names, sprite: sprites, types: cat });
   bob = [];
+
 }
 
 // Push all the existing cards into a list, itemBox.
