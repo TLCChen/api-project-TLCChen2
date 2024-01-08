@@ -130,7 +130,7 @@ h1{
 .img{
     width: 80%;
     height: auto;
-    filter:contrast(1);
+    filter:contrast(0);
     image-rendering: pixelated;
     transition: filter 2s;
 }

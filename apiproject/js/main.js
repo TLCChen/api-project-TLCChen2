@@ -1,6 +1,5 @@
 //import variables
-import { pokemon } from "./myIndex";
-console.log(pokemon)
+
 const URL = `https://pokeapi.co/api/v2/pokemon/?limit=900`;
 
 let list2 = [];
@@ -173,8 +172,6 @@ async function call() {
 // create text for tries left
 async function check() {
   let tries = 0;
-  await getList();
-  await getData2();
   document.querySelector("#change").addEventListener("click", function () {
     if (again != true) {
       tries++;
@@ -240,9 +237,13 @@ function fail() {
         `
   );
 }
-check();
-call();
+async function big(){
+  await call();
+  check();
+}
 
 function popup() {
   window.open("open.html", "opening", "popup");
 }
+
+big()
