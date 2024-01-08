@@ -39,6 +39,7 @@ function choose(){
     cover()
     check()
     call()
+    home()
   })
   document.querySelector("#index").addEventListener("click", function(){
     popup()
